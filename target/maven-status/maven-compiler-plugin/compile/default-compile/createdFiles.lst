@@ -1,0 +1,8 @@
+org/librairy/paperparser/data/AuthorWrapper.class
+org/librairy/paperparser/services/PaperParser.class
+org/librairy/paperparser/utils/Serializations.class
+org/librairy/paperparser/data/AnnotatedPaper.class
+org/librairy/paperparser/processor/GateProcessor.class
+org/librairy/paperparser/processor/UpfProcessor.class
+org/librairy/paperparser/Config.class
+org/librairy/paperparser/eventbus/NewBundleEventHandler.class

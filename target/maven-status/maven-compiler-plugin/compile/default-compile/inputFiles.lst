@@ -1,0 +1,8 @@
+/Users/cbadenes/Projects/librairy/paper-parser/src/main/java/org/librairy/paperparser/data/AuthorWrapper.java
+/Users/cbadenes/Projects/librairy/paper-parser/src/main/java/org/librairy/paperparser/services/PaperParser.java
+/Users/cbadenes/Projects/librairy/paper-parser/src/main/java/org/librairy/paperparser/processor/GateProcessor.java
+/Users/cbadenes/Projects/librairy/paper-parser/src/main/java/org/librairy/paperparser/utils/Serializations.java
+/Users/cbadenes/Projects/librairy/paper-parser/src/main/java/org/librairy/paperparser/Config.java
+/Users/cbadenes/Projects/librairy/paper-parser/src/main/java/org/librairy/paperparser/data/AnnotatedPaper.java
+/Users/cbadenes/Projects/librairy/paper-parser/src/main/java/org/librairy/paperparser/eventbus/NewBundleEventHandler.java
+/Users/cbadenes/Projects/librairy/paper-parser/src/main/java/org/librairy/paperparser/processor/UpfProcessor.java
