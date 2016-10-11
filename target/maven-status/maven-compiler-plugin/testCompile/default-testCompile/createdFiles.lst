@@ -1,2 +1,2 @@
-org/librairy/paperparser/PaperParserTest.class
-org/librairy/paperparser/GateTest.class
+org/librairy/paperparser/DeployTest.class
+org/librairy/paperparser/processor/GateTest.class

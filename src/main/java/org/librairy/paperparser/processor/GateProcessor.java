@@ -42,7 +42,7 @@ public class GateProcessor {
     File driConfigPath;
 
     @Setter
-    @Value("${LIBRAIRY_UPF_PROXY:true}")
+    @Value("#{environment['LIBRAIRY_UPF_PROXY']?:${librairy.upf.miner.proxy}}")
     Boolean proxyEnabled;
 
     private LoadingCache<String, AnnotatedPaper> cache;

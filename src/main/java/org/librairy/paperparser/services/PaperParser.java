@@ -24,13 +24,17 @@ import org.librairy.storage.executor.ParallelExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Badenes Olmedo, Carlos <cbadenes@fi.upm.es>
@@ -51,11 +55,15 @@ public class PaperParser {
     @Autowired
     UDM udm;
 
-    private ParallelExecutor executor;
+    @Value("#{environment['LIBRAIRY_PAPERS_PARALLEL']?:${librairy.upf.parallel}}")
+    Integer parallel;
+
+    private ThreadPoolExecutor pool;
 
     @PostConstruct
     public void setup(){
-        this.executor = new ParallelExecutor();
+        this.pool = new ThreadPoolExecutor(parallel, parallel, 1L, TimeUnit.MINUTES, new ArrayBlockingQueue(parallel, true), new
+                ThreadPoolExecutor.CallerRunsPolicy());
     }
 
     private AnnotatedPaper process(String path){
@@ -90,7 +98,7 @@ public class PaperParser {
     }
 
     public void handleParallel(Relation relation){
-        executor.execute(() -> handle(relation));
+        pool.execute(() -> handle(relation));
     }
 
     public void handle(Relation relation)  {
@@ -116,6 +124,7 @@ public class PaperParser {
 
             Part part = Resource.newPart(entry.getValue());
             part.setSense(entry.getKey());
+            part.setTokens("");
 
             udm.save(part);
             udm.save(Relation.newDescribes(part.getUri(),itemUri));

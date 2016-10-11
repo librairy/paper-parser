@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
@@ -22,9 +23,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @Category(IntegrationTest.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
-public class PaperParserTest {
+@TestPropertySource(properties = {
+        "librairy.columndb.host = wiener.dia.fi.upm.es",
+        "librairy.documentdb.host = wiener.dia.fi.upm.es",
+        "librairy.graphdb.host = wiener.dia.fi.upm.es",
+        "librairy.eventbus.host = wiener.dia.fi.upm.es",
+        "librairy.uri = drinventor.eu" //librairy.org
+})
+public class DeployTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PaperParserTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DeployTest.class);
 
     @Test
     public void run() throws InterruptedException {

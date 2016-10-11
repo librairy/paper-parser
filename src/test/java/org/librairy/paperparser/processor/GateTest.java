@@ -5,7 +5,7 @@
  *
  */
 
-package org.librairy.paperparser;
+package org.librairy.paperparser.processor;
 
 import edu.upf.taln.dri.lib.Factory;
 import edu.upf.taln.dri.lib.exception.DRIexception;
