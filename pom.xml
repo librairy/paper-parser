@@ -11,7 +11,7 @@
 
 	<groupId>org.librairy</groupId>
     <artifactId>librairy-paper-parser</artifactId>
-    <version>0.13</version>
+    <version>0.14-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>paper-parser</name>
     <description>Retrieve parts from research papers.</description>
