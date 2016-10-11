@@ -50,7 +50,7 @@ public class GateProcessor {
     @PostConstruct
     public void setup() throws DRIexception {
 
-        LOG.info("Initializing UPF Text Mining Framework from: " + driConfigPath + " ..");
+        LOG.info("Initializing UPF Text Mining Framework from: " + driConfigPath.getAbsolutePath() + " ..");
 
         // Enable the PDFX proxy service
         //PDFloaderImpl.PDFXproxyEnabled = true;

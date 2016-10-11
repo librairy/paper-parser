@@ -11,7 +11,7 @@
 
 	<groupId>org.librairy</groupId>
     <artifactId>librairy-paper-parser</artifactId>
-    <version>0.13-SNAPSHOT</version>
+    <version>0.13</version>
     <packaging>war</packaging>
     <name>paper-parser</name>
     <description>Retrieve parts from research papers.</description>
@@ -72,6 +72,7 @@
         <commons.pool.version>2.4.1</commons.pool.version>
         <flexjson.version>2.0</flexjson.version>
         <guava.version>18.0</guava.version>
+        <httpclient.version>3.1</httpclient.version>
         <jackson.version>1.9.11</jackson.version>
         <fasterxml.jackson.version>2.4.4</fasterxml.jackson.version>
         <javassist.version>3.12.1.GA</javassist.version>
@@ -95,6 +96,7 @@
 
         <servlet.api.version>2.4</servlet.api.version>
         <slf4j.version>1.7.12</slf4j.version>
+        <springboot.version>1.2.1.RELEASE</springboot.version>
         <spring.version>4.2.7.RELEASE</spring.version>
         <surefire.junit.version>2.12</surefire.junit.version>
         <swagger.jersey.version>1.5.0</swagger.jersey.version>
@@ -316,6 +318,58 @@
                 <version>${upf.version}</version>
             </dependency>
 
+            <!-- Spring Libraries -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-messaging</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-logging</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
 
             <!-- Tomcat Libraries -->
             <dependency>
@@ -432,11 +486,6 @@
                 <artifactId>camel-servlet</artifactId>
                 <version>${camel.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-jackson</artifactId>
-                <version>${camel.version}</version>
-            </dependency>
 
             <!-- XML Serializer -->
             <dependency>
@@ -455,6 +504,18 @@
             <groupId>org.librairy</groupId>
             <artifactId>librairy-boot</artifactId>
             <version>${librairy.boot.version}</version>
+        </dependency>
+
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- UPF Text Mining -->
@@ -490,6 +551,10 @@
                 <exclusion>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpmime</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -570,6 +635,55 @@
             <artifactId>jetty-webapp</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Apache Camel context -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-groovy</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-script</artifactId>
+        </dependency>
+
+        <!-- Apache Camel content binding -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jaxb</artifactId>
+        </dependency>
+
+        <!-- Apache Camel Swagger -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-swagger</artifactId>
+        </dependency>
+
+        <!-- Apache Camel HTTP component -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-servlet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-metrics</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -648,7 +762,7 @@
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
-                <version>0.13-SNAPSHOT</version>
+                <version>0.12</version>
                 <executions>
                     <execution>
                         <id>jar-deploy</id>
